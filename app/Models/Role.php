@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Role extends Model
 {
     use HasFactory;
+    protected $table = 'role';
 
-    public function pengguna(): HasMany{
-        return $this->hasMany(Pengguna::class);
+    public function pengguna(): HasMany {
+        return $this->hasMany(Pengguna::class, 'id_role');
     }
 }

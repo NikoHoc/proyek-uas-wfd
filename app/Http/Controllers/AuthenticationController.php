@@ -18,8 +18,29 @@ class AuthenticationController extends Controller
             'username' => ['required'],
             'password' => ['required'],
         ]);
-
-        
+    
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+    
+            $role = Auth::user()->role->nama;
+            
+            // Tentukan URL redirect sesuai role
+            $redirectUrl = match ($role) {
+                'admin' => route('admin.index'),
+                'pemilik' => route('pemilik.index'),
+                'penghuni' => route('penghuni.index'),
+                default => route('authentication.login'),
+            };
+    
+            // Simpan URL redirect ke session
+            session(['redirectUrl' => $redirectUrl]);
+    
+            return redirect()
+                ->route('authentication.login')
+                ->with('success', 'Login berhasil!');
+        }
+    
+        return back()->with('error', 'Username atau password salah.');
     }
 
     public function register_form() {
@@ -52,5 +73,15 @@ class AuthenticationController extends Controller
         } else {
             return response()->json(['success' => false, 'message' => 'User registration failed']);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();  // Logout user
+
+        $request->session()->invalidate();  // Hapus session
+        $request->session()->regenerateToken();  // Regenerasi CSRF token
+
+        return redirect()->route('authentication.login')->with('success', 'Logout berhasil!');  // Redirect ke halaman login
     }
 }

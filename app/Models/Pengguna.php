@@ -7,13 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Pengguna extends Model
+class Pengguna extends Authenticatable
 {
     use HasFactory;
 
+    protected $table = 'pengguna';
+
     public function role(): BelongsTo {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'id_role');
     }
 
     public function pesanan(): HasMany {
@@ -26,5 +29,10 @@ class Pengguna extends Model
 
     public function reviews(): HasMany {
         return $this->hasMany(Review::class);
+    }
+
+    public function getAuthIdentifierName()
+    {
+        return 'username';
     }
 }

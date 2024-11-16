@@ -25,9 +25,21 @@ Route::get('/authentication/login', [AuthenticationController::class, 'login_for
 Route::post('/authentication/login', [AuthenticationController::class, 'authenticate']);
 Route::get('/authentication/register', [AuthenticationController::class, 'register_form'])->name('authentication.register');
 Route::post('/authentication/register', [AuthenticationController::class, 'add_user']);
+Route::post('/authentication/logout', [AuthenticationController::class, 'logout'])->name('authentication.logout');
 
 
-Route::get('/admin/index', [AdminController::class, 'index'])->middleware('auth.role:admin')->name('admin.index');
-Route::get('/pemilik_kos/index', [PemilikController::class, 'index'])->middleware('auth.role:pemilik_kos')->name('pemilik_kos.index');
-Route::get('/penghuni/index', [PenghuniController::class, 'index'])->middleware('auth.role:penghuni')->name('penghuni.index');
+// Route::get('/admin/index', [AdminController::class, 'index']);
+// Route::get('/pemilik_kos/index', [PemilikController::class, 'index']);
+// Route::get('/penghuni/index', [PenghuniController::class, 'index']);
 
+Route::middleware(['role:admin'])->group(function () {
+    Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
+});
+
+Route::middleware(['role:pemilik'])->group(function () {
+    Route::get('/pemilik_kos/index', [PemilikController::class, 'index'])->name('pemilik.index');
+});
+
+Route::middleware(['role:penghuni'])->group(function () {
+    Route::get('/penghuni/index', [PenghuniController::class, 'index'])->name('penghuni.index');
+});
