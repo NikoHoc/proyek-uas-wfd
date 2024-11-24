@@ -18,9 +18,9 @@ class UserRoleMiddleware
     {
         $user = Auth::user();
 
-        // Jika pengguna tidak login atau role tidak sesuai
         if (!$user || $user->role->nama !== $role) {
-            return redirect()->route('authentication.login')->with('error', 'Akses ditolak.');
+            // return redirect()->route('authentication.login')->with('error', 'Akses ditolak.');
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses ke halaman ini.');
         }
 
         return $next($request);

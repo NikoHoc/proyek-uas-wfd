@@ -33,7 +33,10 @@ Route::post('/authentication/logout', [AuthenticationController::class, 'logout'
 // Route::get('/penghuni/index', [PenghuniController::class, 'index']);
 
 Route::middleware(['role:admin'])->group(function () {
-    Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/manage_users', [AdminController::class, 'manage_users'])->name('admin.manage_users');
+    Route::get('/admin/manage_kos', [AdminController::class, 'manage_kos'])->name('admin.manage_kos');
+    Route::get('/admin/form', [AdminController::class, 'form'])->name('admin.form');
 });
 
 Route::middleware(['role:pemilik'])->group(function () {

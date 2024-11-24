@@ -1,8 +1,8 @@
-@extends('base.base')
+@extends('base.base_admin')
 
 @section('content')
 
-
+<h1>Manage Kos Page</h1>
 
 @endsection
 

@@ -30,24 +30,4 @@
 @endsection
 
 @section('library-js')
-<script>
-    @if(session('success'))
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: '{{ session('success') }}',
-            confirmButtonText: 'OK',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '{{ session('redirectUrl') }}';
-            }
-        });
-    @elseif(session('error'))
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: '{{ session('error') }}',
-        });
-    @endif
-</script>
 @endsection

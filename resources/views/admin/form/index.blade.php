@@ -2,12 +2,10 @@
 
 @section('content')
 
-<h1>INI admin dashboard</h1>
+<h1>Form Admin</h1>
 
 @endsection
 
 @section('library-js')
-<script>
-   
-</script>
+
 @endsection

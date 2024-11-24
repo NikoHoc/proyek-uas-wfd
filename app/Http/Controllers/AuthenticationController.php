@@ -24,15 +24,13 @@ class AuthenticationController extends Controller
     
             $role = Auth::user()->role->nama;
             
-            // Tentukan URL redirect sesuai role
             $redirectUrl = match ($role) {
                 'admin' => route('admin.index'),
                 'pemilik' => route('pemilik.index'),
                 'penghuni' => route('penghuni.index'),
                 default => route('authentication.login'),
             };
-    
-            // Simpan URL redirect ke session
+
             session(['redirectUrl' => $redirectUrl]);
     
             return redirect()
@@ -77,11 +75,11 @@ class AuthenticationController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();  // Logout user
+        Auth::logout(); 
 
-        $request->session()->invalidate();  // Hapus session
-        $request->session()->regenerateToken();  // Regenerasi CSRF token
+        $request->session()->invalidate(); 
+        $request->session()->regenerateToken();  
 
-        return redirect()->route('authentication.login')->with('success', 'Logout berhasil!');  // Redirect ke halaman login
+        return redirect()->route('authentication.login')->with('success', 'Logout berhasil!'); 
     }
 }

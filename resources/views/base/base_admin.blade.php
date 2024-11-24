@@ -15,23 +15,65 @@
     @yield('library-css')
     <title>WFD KOS</title>
 </head>
-<body>
-    {{-- @include('includes.navbar') --}}
+<body class="h-full">
+    <div class="flex h-full">
+        <!-- Sidebar -->
+        @include('layouts.admin_sidebar')
 
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Navbar -->
+            @include('layouts.admin_navbar')
 
-    @yield('content')
+            <!-- Page Content -->
+            <main class="flex-1 bg-gray-100 p-4">
+                @yield('content')
+            </main>
+        </div>
+    </div>
 
-
-    {{-- @include('includes.footer') --}}
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <!-- Sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Data table -->
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
+
     @vite(['resources/js/app.js'])
     @yield('library-js')
     <script>
+        $(document).ready(function () {
+            $('#toggle-sidebar').on('click', function () {
+                const sidebar = $('#sidebar');
+                const navTitles = $('.menu-label');
+
+                sidebar.toggleClass('w-64 w-16');
+
+                if (sidebar.hasClass('w-16')) {
+                    navTitles.addClass('hidden');
+                } else {
+                    navTitles.removeClass('hidden');
+                }
+            });
+
+            $('#logout-link').on('click', function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You will be logged out!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, logout!',
+                    cancelButtonText: 'Cancel',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#logout-form').submit();
+                    }
+                });
+            });
+        });
+
         @if(session('success'))
             Swal.fire({
                 icon: 'success',
