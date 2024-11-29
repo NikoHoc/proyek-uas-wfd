@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
+    protected $table = 'review'; 
+
     use HasFactory;
 
     public function pengguna(): BelongsTo {
-        return $this->belongsTo(Pengguna::class);
+        return $this->belongsTo(Pengguna::class, 'id_pengguna');
     }
 
     public function kos(): BelongsTo {
-        return $this->belongsTo(Kos::class);
+        return $this->belongsTo(Kos::class, 'id_kos');
     }
 }

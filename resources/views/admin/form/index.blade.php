@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Form Admin</h1>
+<h1>Form Admin</h1>                                                                                                         
 
 @endsection
 

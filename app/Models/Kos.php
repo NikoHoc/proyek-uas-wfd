@@ -12,7 +12,7 @@ class Kos extends Model
     use HasFactory;
 
     public function pengguna(): BelongsTo {
-        return $this->belongsTo(Pengguna::class);
+        return $this->belongsTo(Pengguna::class, 'id_pengguna');
     }
 
     public function kamar(): HasMany {

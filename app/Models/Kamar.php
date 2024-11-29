@@ -12,7 +12,7 @@ class Kamar extends Model
     use HasFactory;
 
     public function kos(): BelongsTo {
-        return $this->belongsTo(Kos::class);
+        return $this->belongsTo(Kos::class, 'id_kos');
     }
 
     public function pesanan(): HasMany {

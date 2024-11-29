@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pesanan extends Model
 {
+    protected $table = 'pesanan'; 
+
     use HasFactory;
 
     public function pengguna(): BelongsTo{
-        return $this->belongsTo(Pengguna::class);
+        return $this->belongsTo(Pengguna::class, 'id_pengguna');
     }
 
     public function kamar(): BelongsTo {
-        return $this->belongsTo(Kamar::class);
+        return $this->belongsTo(Kamar::class, 'id_kamar');
     }
 }

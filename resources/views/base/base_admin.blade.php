@@ -26,7 +26,7 @@
             @include('layouts.admin_navbar')
 
             <!-- Page Content -->
-            <main class="flex-1 bg-gray-100 p-4">
+            <main class="bg-gray-100 p-4 w-full">
                 @yield('content')
             </main>
         </div>
@@ -47,6 +47,7 @@
             $('#toggle-sidebar').on('click', function () {
                 const sidebar = $('#sidebar');
                 const navTitles = $('.menu-label');
+                const mainContent = $('.main-content');
 
                 sidebar.toggleClass('w-64 w-16');
 
