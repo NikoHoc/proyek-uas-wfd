@@ -13,7 +13,7 @@ class PenghuniController extends Controller
     // }
 
     public function showAllKos(){
-        $listKos = Kos::query()->get();
+        $listKos = Kos::with(['pengguna', 'kamar'])->withCount('kamar')->get();
         return view('penghuni.index', [
             "listKos" => $listKos
         ]);

@@ -16,10 +16,10 @@ class Kos extends Model
     }
 
     public function kamar(): HasMany {
-        return $this->hasMany(Kamar::class);
+        return $this->hasMany(Kamar::class, 'id_kos');
     }
 
     public function reviews(): HasMany {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class, 'id_kos');
     }
 }

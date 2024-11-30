@@ -1,15 +1,26 @@
 @extends('base.base')
 
 @section('content')
-<div class="container mx-auto py-8">
-
+<div class="container mx-auto py-4">
     <!-- Button home dan pesanan -->
-    <div class="flex justify-end space-x-4 mb-6">
+    {{-- <div class="flex justify-end space-x-4 mb-6">
         <button class="btn btn-ghost">Home</button>
         <button class="btn btn-ghost">Pemesanan</button>
+    </div> --}}
+
+    <div class="navbar bg-neutral rounded-full border" >
+        <div class="flex-1">
+          <a class="btn btn-ghost text-xl text-white">Penghuni</a>
+        </div>
+        <div class="flex-none">
+          <ul class="menu menu-horizontal px-2 text-white">
+            <li><a class="font-bold hover:bg-gray-500">Home</a></li>
+            <li><a class="font-bold hover:bg-gray-500">Pemesanan</a></li>
+          </ul>
+        </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         @foreach($listKos as $kos)
         <a href="{{ url('/penghuni/kos/index') }}"
             class="card bg-white shadow-lg rounded-lg overflow-hidden"
@@ -22,7 +33,8 @@
             <div class="p-4 bg-gray-100">
                 <h3 class="text-lg font-bold">{{ $kos->name }}</h3>
                 <p class="text-gray-600 text-sm mt-2">{{ $kos->alamat }}</p>
-                <p class="text-gray-800 text-sm mt-2">Pemilik ID: {{ $kos->id_pengguna }}</p>
+                <p class="text-gray-800 text-sm mt-2">Pemilik: {{ $kos->pengguna->username }}</p>
+                <p class="text-gray-800 text-sm mt-2">Total Kamar: {{ $kos->kamar_count }}</p>
             </div>
         </a>
 
