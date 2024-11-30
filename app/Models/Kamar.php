@@ -11,6 +11,8 @@ class Kamar extends Model
 {
     use HasFactory;
 
+    protected $table = 'kamar';
+    
     public function kos(): BelongsTo {
         return $this->belongsTo(Kos::class, 'id_kos');
     }

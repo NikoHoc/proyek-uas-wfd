@@ -45,5 +45,6 @@ Route::middleware(['role:pemilik'])->group(function () {
 });
 
 Route::middleware(['role:penghuni'])->group(function () {
-    Route::get('/penghuni/index', [PenghuniController::class, 'index'])->name('penghuni.index');
+    Route::get('/penghuni/index', [PenghuniController::class, 'showAllKos'])->name('penghuni.index');
+    Route::get('/penghuni/kos/index', [PenghuniController::class, 'showAllKamar'])->name('penghuni.kos.index');
 });
