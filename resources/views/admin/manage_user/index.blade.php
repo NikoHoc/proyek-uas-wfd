@@ -62,7 +62,15 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $k['id'] }}</td>
                         <td>{{ $k['nama_kos'] }}</td>
-                        <td>{{ $k['password'] }}</td>
+                        <td>
+                            <div class="relative flex items-center">
+                                <input type="password" value="{{ $k['password'] }}" 
+                                class="password-input px-2 py-1" readonly/>
+                                <button type="button" class="toggle-password ml-2 text-gray-500 hover:text-gray-800">
+                                    <span class="iconify eye-icon" data-icon="mdi:eye-outline" data-inline="false"></span>
+                                </button>
+                            </div>
+                        </td>
                         <td>{{ $k['alamat_kos'] }}</td>
                         <td>{{ $k['jumlah_kamar'] }}</td>
                         <td>{{ $k['pemilik'] }}</td>
@@ -97,7 +105,15 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $p->id }}</td>
                         <td>{{ $p->username }}</td>
-                        <td>{{ $p->password }}</td>
+                        <td>
+                            <div class="relative flex items-center">
+                                <input type="password" value="{{ $p['password'] }}" 
+                                class="password-input px-2 py-1" readonly/>
+                                <button type="button" class="toggle-password ml-2 text-gray-500 hover:text-gray-800">
+                                    <span class="iconify eye-icon" data-icon="mdi:eye-outline" data-inline="false"></span>
+                                </button>
+                            </div>
+                        </td>
                         <td>{{ $p->pesanan_count }}</td>
                         <td>{{ $p->reviews_count }}</td>
                         <td>{{ $p->created_at }}</td>
@@ -114,9 +130,21 @@
 @section('library-js')
 <script>
     $(document).ready(function() {
-        $('#userTable').DataTable();
-        $('#pemilikTable').DataTable();
-        $('#penghuniTable').DataTable();
+        $('#userTable').DataTable({
+            language: {
+                searchPlaceholder: "Cari User", 
+            }
+        });
+        $('#pemilikTable').DataTable({
+            language: {
+                searchPlaceholder: "Cari Pemilik", 
+            }
+        });
+        $('#penghuniTable').DataTable({
+            language: {
+                searchPlaceholder: "Cari Penghuni", 
+            }
+        });
 
         // Tabs logic
         $('.tab').on('click', function() {
@@ -126,6 +154,19 @@
             $('.table-section').addClass('hidden');
             $(`#${target}`).removeClass('hidden');
         });
+
+        $(".toggle-password").on("click", function () {
+            const passwordInput = $(this).siblings(".password-input");
+
+            if (passwordInput.attr("type") === "password") {
+                passwordInput.attr("type", "text");
+                $(this).find(".eye-icon").attr("data-icon", "mdi:eye-off-outline");
+            } else {
+                passwordInput.attr("type", "password");
+                $(this).find(".eye-icon").attr("data-icon", "mdi:eye-outline");
+            }
+        });
+
         // SweetAlert for Delete Confirmation
         $('.delete-form').on('submit', function(event) {
             event.preventDefault();

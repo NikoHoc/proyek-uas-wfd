@@ -26,12 +26,14 @@
             @include('layouts.admin_navbar')
 
             <!-- Page Content -->
-            <main class="bg-gray-100 p-4 w-full">
+            <main class="p-4 w-full">
                 @yield('content')
             </main>
         </div>
     </div>
 
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <!-- Sweetalert -->

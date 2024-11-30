@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kos;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class AdminController extends Controller
 {
@@ -19,7 +20,7 @@ class AdminController extends Controller
             return [
                 'id' => $item->id,
                 'nama_kos' => $item->name,
-                'password' => $item->pengguna->password,
+                'password' => Crypt::decryptString($item->pengguna->encrypted_password),
                 'alamat_kos' => $item->alamat,
                 'jumlah_kamar' => $item->kamar->count(),
                 'pemilik' => $item->pengguna->username,
