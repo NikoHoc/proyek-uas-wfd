@@ -43,13 +43,20 @@
     <main class="flex-1 p-6 overflow-y-auto">
 
         <!-- Button home dan pesanan -->
-        <div class="flex justify-end space-x-4 mb-6">
-            <button class="btn btn-ghost">Home</button>
-            <button class="btn btn-ghost">Pemesanan</button>
+        <div class="navbar bg-neutral rounded-full border" >
+            <div class="flex-1">
+              <a class="btn btn-ghost text-xl text-white">Penghuni</a>
+            </div>
+            <div class="flex-none">
+              <ul class="menu menu-horizontal px-2 text-white">
+                <li><a class="font-bold hover:bg-gray-500">Home</a></li>
+                <li><a class="font-bold hover:bg-gray-500">Pemesanan</a></li>
+              </ul>
+            </div>
         </div>
 
         <!-- Search Bar -->
-        <div class="flex justify-between mb-6">
+        <div class="flex justify-between mb-6 my-6">
             <div class="form-control w-3/4">
                 <div class="input-group">
                     <input type="text" placeholder="Search kamar..." class="input input-bordered w-full" />
