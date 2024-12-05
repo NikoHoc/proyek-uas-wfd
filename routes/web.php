@@ -35,9 +35,9 @@ Route::post('/authentication/logout', [AuthenticationController::class, 'logout'
 
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admin/manage_users', [AdminController::class, 'manage_users'])->name('admin.manage_users');
-    Route::get('/admin/manage_kos', [AdminController::class, 'manage_kos'])->name('admin.manage_kos');
-    Route::get('/admin/form', [AdminController::class, 'form'])->name('admin.form');
+    Route::get('/admin/manage-users', [AdminController::class, 'manageUsers'])->name('admin.manage-users');
+    Route::get('/admin/form-pemilik', [AdminController::class, 'formPemilik'])->name('admin.form-pemilik');
+    Route::get('/admin/form-penghuni', [AdminController::class, 'formPenghuni'])->name('admin.form-penghuni');
 });
 
 Route::middleware(['role:pemilik'])->group(function () {

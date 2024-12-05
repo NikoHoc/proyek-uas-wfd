@@ -13,7 +13,7 @@ class AdminController extends Controller
         return view('admin.index', ['title' => 'Dashboard']);
     }
 
-    public function manage_users () {
+    public function manageUsers () {
         $usersData = Pengguna::with('role')->whereIn('id_role', [2, 3])->get();
 
         $kosData = Kos::with('pengguna', 'kamar', 'reviews')->get()->map(function ($item) {
@@ -32,7 +32,7 @@ class AdminController extends Controller
         $penghuniData = Pengguna::where('id_role', 3)->withCount(['pesanan', 'reviews'])->get();
         // $userData = Pengguna::query()->get();
         // $kosData = Kos::query()->get();
-        return view('admin.manage_user.index', [
+        return view('admin.manage-user.index', [
             'title' => 'Manage Users',
             'usersData' => $usersData,
             'kosData' => $kosData,
@@ -40,15 +40,17 @@ class AdminController extends Controller
         ]);
     }
 
-    public function manage_kos () {
+    public function formPemilik () {
         
-        return view('admin.manage_kos.index', [
-            'title' => 'Manage Kos',
+        return view('admin.form-pemilik.index', [
+            'title' => 'Form Pemilik Kos',
             
         ]);
     }
 
-    public function form () {
-        return view('admin.form.index', ['title' => 'Form']);
+    public function formPenghuni () {
+        return view('admin.form-penghuni.index', [
+            'title' => 'Form Penghuni Kos'
+        ]);
     }
 }

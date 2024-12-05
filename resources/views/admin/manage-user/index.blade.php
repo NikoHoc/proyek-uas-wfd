@@ -3,14 +3,16 @@
 @section('content')
 <div class="mx-auto px-4">
     <h1 class="text-2xl font-bold mb-4">User Tables</h1>
-    
+
     <div class="tabs tabs-boxed mb-6">
-        <a class="tab tab-active" data-target="user-table">Users</a>
-        <a class="tab" data-target="pemilik-table">Pemilik</a>
-        <a class="tab" data-target="penghuni-table">Penghuni</a>
+        <a class="tab tab-active transition duration-300 ease-in-out" data-target="user-table">Users</a>
+        <a class="tab transition duration-300 ease-in-out" data-target="pemilik-table">Pemilik</a>
+        <a class="tab transition duration-300 ease-in-out" data-target="penghuni-table">Penghuni</a>
     </div>
 
-    <div id="user-table" class="table-section">
+    <div id="tab-buttons" class="flex justify-end gap-2 mb-4"></div>
+
+    <div id="user-table" class="table-section transition-opacity duration-500 ease-in-out">
         <table id="userTable" class="table-auto w-full text-left">
             <thead>
                 <tr>
@@ -25,7 +27,7 @@
             </thead>
             <tbody>
                 @foreach ($usersData as $index => $user)
-                    <tr>
+                    <tr >
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->username }}</td>
@@ -39,7 +41,7 @@
         </table>
     </div>
 
-    <div id="pemilik-table" class="table-section hidden">
+    <div id="pemilik-table" class="table-section hidden transition-opacity duration-500 ease-in-out">
         <table id="pemilikTable" class="table-auto w-full text-left">
             <thead>
                 <tr>
@@ -74,7 +76,7 @@
         </table>
     </div>
 
-    <div id="penghuni-table" class="table-section hidden">
+    <div id="penghuni-table" class="table-section hidden transition-opacity duration-500 ease-in-out">
         <table id="penghuniTable" class="table-auto w-full text-left">
             <thead>
                 <tr>
@@ -127,12 +129,20 @@
         });
 
         // Tabs logic
-        $('.tab').on('click', function() {
+        $('.tab').on('click', function () {
             const target = $(this).data('target');
+
             $('.tab').removeClass('tab-active');
             $(this).addClass('tab-active');
-            $('.table-section').addClass('hidden');
-            $(`#${target}`).removeClass('hidden');
+
+            $('.table-section').addClass('opacity-0');
+            setTimeout(() => {
+                $('.table-section').addClass('hidden');
+                $(`#${target}`).removeClass('hidden'); 
+                setTimeout(() => {
+                    $(`#${target}`).removeClass('opacity-0');
+                }, 50);
+            }, 300);
         });
 
         $(".toggle-password").on("click", function () {

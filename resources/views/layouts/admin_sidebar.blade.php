@@ -15,44 +15,13 @@
                 </svg>
                 <span class="menu-label text-lg">Dashboard</span>
             </a>
-            <a href="{{ route('admin.manage_users') }}" class="{{ Route::is('admin.manage_users') ? 'bg-gray-700 text-white' : '' }} flex items-center space-x-2 text-gray-200 hover:text-white hover:bg-gray-700 rounded-md p-2 transition">
+            <a href="{{ route('admin.manage-users') }}" class="{{ Route::is('admin.manage_users') ? 'bg-gray-700 text-white' : '' }} flex items-center space-x-2 text-gray-200 hover:text-white hover:bg-gray-700 rounded-md p-2 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0a3 3 0 0 1 6 0Z" />
                 </svg>
                 <span class="menu-label text-lg">Manage User</span>
             </a>
-            <a href="{{ route('admin.manage_kos') }}" class="{{ Route::is('admin.manage_kos') ? 'bg-gray-700 text-white' : '' }} flex items-center space-x-2 text-gray-200 hover:text-white hover:bg-gray-700 rounded-md p-2 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 36 36">
-                    <path fill="currentColor" d="M31 8h-8v2h8v21h-8v2h10V10a2 2 0 0 0-2-2" class="clr-i-outline clr-i-outline-path-1" />
-                    <path fill="currentColor" d="M19.88 3H6.12A2.12 2.12 0 0 0 4 5.12V33h18V5.12A2.12 2.12 0 0 0 19.88 3M20 31h-3v-3H9v3H6V5.12A.12.12 0 0 1 6.12 5h13.76a.12.12 0 0 1 .12.12Z" class="clr-i-outline clr-i-outline-path-2" />
-                    <path fill="currentColor" d="M8 8h2v2H8z" class="clr-i-outline clr-i-outline-path-3" />
-                    <path fill="currentColor" d="M12 8h2v2h-2z" class="clr-i-outline clr-i-outline-path-4" />
-                    <path fill="currentColor" d="M16 8h2v2h-2z" class="clr-i-outline clr-i-outline-path-5" />
-                    <path fill="currentColor" d="M8 13h2v2H8z" class="clr-i-outline clr-i-outline-path-6" />
-                    <path fill="currentColor" d="M12 13h2v2h-2z" class="clr-i-outline clr-i-outline-path-7" />
-                    <path fill="currentColor" d="M16 13h2v2h-2z" class="clr-i-outline clr-i-outline-path-8" />
-                    <path fill="currentColor" d="M8 18h2v2H8z" class="clr-i-outline clr-i-outline-path-9" />
-                    <path fill="currentColor" d="M12 18h2v2h-2z" class="clr-i-outline clr-i-outline-path-10" />
-                    <path fill="currentColor" d="M16 18h2v2h-2z" class="clr-i-outline clr-i-outline-path-11" />
-                    <path fill="currentColor" d="M8 23h2v2H8z" class="clr-i-outline clr-i-outline-path-12" />
-                    <path fill="currentColor" d="M12 23h2v2h-2z" class="clr-i-outline clr-i-outline-path-13" />
-                    <path fill="currentColor" d="M16 23h2v2h-2z" class="clr-i-outline clr-i-outline-path-14" />
-                    <path fill="currentColor" d="M23 13h2v2h-2z" class="clr-i-outline clr-i-outline-path-15" />
-                    <path fill="currentColor" d="M27 13h2v2h-2z" class="clr-i-outline clr-i-outline-path-16" />
-                    <path fill="currentColor" d="M23 18h2v2h-2z" class="clr-i-outline clr-i-outline-path-17" />
-                    <path fill="currentColor" d="M27 18h2v2h-2z" class="clr-i-outline clr-i-outline-path-18" />
-                    <path fill="currentColor" d="M23 23h2v2h-2z" class="clr-i-outline clr-i-outline-path-19" />
-                    <path fill="currentColor" d="M27 23h2v2h-2z" class="clr-i-outline clr-i-outline-path-20" />
-                    <path fill="none" d="M0 0h36v36H0z" />
-                </svg>
-                <span class="menu-label text-lg">Manage Kos</span>
-            </a>
-            <a href="{{ route('admin.form') }}" class="{{ Route::is('admin.form') ? 'bg-gray-700 text-white' : '' }} flex items-center space-x-2 text-gray-200 hover:text-white hover:bg-gray-700 rounded-md p-2 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 20 20">
-                    <path fill="currentColor" d="M4.5 5.75a2.25 2.25 0 1 1 4.5 0a2.25 2.25 0 0 1-4.5 0M6.75 2.5a3.25 3.25 0 1 0 0 6.5a3.25 3.25 0 0 0 0-6.5M1.5 12a2 2 0 0 1 2-2H10a2 2 0 0 1 .993.263q-.416.346-.758.765A1 1 0 0 0 10 11H3.5a1 1 0 0 0-1 1v.078l.007.083a2.95 2.95 0 0 0 .498 1.336C3.492 14.201 4.513 15 6.75 15c.954 0 1.687-.145 2.252-.367q.013.525.12 1.02C8.476 15.87 7.695 16 6.75 16c-2.513 0-3.867-.92-4.568-1.934a3.95 3.95 0 0 1-.67-1.807a3 3 0 0 1-.012-.175zM13 6.5a1.5 1.5 0 1 1 3 0a1.5 1.5 0 0 1-3 0M14.5 4a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5M19 14.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0m-4-2a.5.5 0 0 0-1 0V14h-1.5a.5.5 0 0 0 0 1H14v1.5a.5.5 0 0 0 1 0V15h1.5a.5.5 0 0 0 0-1H15z" />
-                </svg>
-                <span class="menu-label text-lg">Add User</span>
-            </a>
+            
         </nav>
     </div>
     <!-- Logout -->
