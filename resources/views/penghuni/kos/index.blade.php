@@ -95,11 +95,16 @@
                     <p>Harga kamar: Rp{{ number_format($kamar->harga, 0, ',', '.') }}</p>
                     <p>{{ $kamar->deskripsi }}</p>
                     <div class="card-actions justify-end">
-                        <!-- Form untuk memesan kamar -->
-                        <form action="{{ route('penghuni.kos.pesan', ['kamarId' => $kamar->id]) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-neutral">Pesan</button>
-                        </form>
+                        @if($kamar->status === 'booked')
+                            <!-- Tombol dinonaktifkan jika kamar sudah penuh -->
+                            <button class="btn btn-neutral" disabled>Sudah Penuh</button>
+                        @else
+                            <!-- Form untuk memesan kamar -->
+                            <form action="{{ route('penghuni.kos.pesan', $kamar->id)}}" method="POST">
+                                @csrf
+                                <button id="pay-button" type="submit" class="btn btn-neutral">Pesan</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -114,7 +119,7 @@
 @endsection
 
 @section('library-js')
-<script>
+<script>    
     // Mengambil ID kos dari sessionStorage dan menampilkannya dalam alert
     document.addEventListener('DOMContentLoaded', function() {
         var kosId = sessionStorage.getItem('kos_id');

@@ -158,6 +158,12 @@ class PemilikController extends Controller
         if ($request->has('status')) {
             $pesanan->status_pemesanan = $request->input('status');
             $pesanan->save(); // Simpan perubahan status
+
+            $kamar = $pesanan->kamar;
+            if ($kamar) {
+                $kamar->status = 'booked';
+                $kamar->save();
+            }
         }
 
         // Kirimkan pesan sukses untuk ditampilkan di view

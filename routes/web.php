@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PemilikController;
 use App\Http\Controllers\PenghuniController;
 use Illuminate\Support\Facades\Route;
@@ -65,5 +66,5 @@ Route::middleware(['role:penghuni'])->group(function () {
     Route::get('/penghuni/kos/index', [PenghuniController::class, 'showAllKamar'])->name('penghuni.kos.index');
     Route::get('/penghuni/pemesanan/index', [PenghuniController::class, 'showPemesanan'])->name('penghuni.pemesanan.index');
     Route::get('/kos/{id}', [PenghuniController::class, 'show'])->name('kos.show');
-    Route::post('/penghuni/kos/index/{kamarId}', [PenghuniController::class, 'pesanKamar'])->name('penghuni.kos.pesan');
+    Route::post('/penghuni/kos/pesan/{kamarId:id}', [PenghuniController::class, 'pesanKamar'])->name('penghuni.kos.pesan');
 });
