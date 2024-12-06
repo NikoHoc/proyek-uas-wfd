@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kamar;
 use App\Models\Kos;
 use App\Models\Pengguna;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,8 +65,17 @@ class PemilikController extends Controller
             ->where('id_pengguna', $userId) // Sesuaikan nama kolom 'user_id' dengan skema database Anda
             ->get();
 
+        // Mengambil pesanan yang terkait dengan kos yang dimiliki oleh pengguna
+        $pesanan = Pesanan::query()
+            ->whereHas('kamar', function ($query) use ($kos) {
+                // Menyaring kamar berdasarkan kos yang dimiliki pengguna
+                $query->whereIn('id_kos', $kos->pluck('id'));
+            })
+            ->get();
+
         return view('pemilik_kos.request.index', [
-            "kos" => $kos
+            "kos" => $kos,
+            "pesanan" => $pesanan,
         ]);
     }
 
@@ -137,6 +147,20 @@ class PemilikController extends Controller
 
         // Redirect atau tampilkan pesan sukses
         return back()->with('success', 'Kamar berhasil disimpan!');
+    }
 
+    public function updateStatus(Request $request, $id)
+    {
+        // Cari pesanan berdasarkan ID
+        $pesanan = Pesanan::findOrFail($id);
+
+        // Perbarui status pesanan berdasarkan input
+        if ($request->has('status')) {
+            $pesanan->status_pemesanan = $request->input('status');
+            $pesanan->save(); // Simpan perubahan status
+        }
+
+        // Kirimkan pesan sukses untuk ditampilkan di view
+        return redirect()->back()->with('status', 'Status pemesanan berhasil diperbarui');
     }
 }

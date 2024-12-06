@@ -52,6 +52,7 @@ Route::middleware(['role:pemilik'])->group(function () {
     Route::get('/pemilik_kos/laporan', [PemilikController::class, 'indexLaporan'])->name('pemilik.laporan.index');
     Route::get('/pemilik_kos/laporan/addKamar', [PemilikController::class, 'addKamar'])->name('pemilik.laporan.kamar.index');
     Route::post('/pemilik_kos/laporan/addKamar/{id_kos}', [PemilikController::class, 'storeKamar'])->name('pemilik.laporan.kamar.store');
+    Route::put('/pemilik-kos/request/update-status/{pesanan}', [PemilikController::class, 'updateStatus'])->name('pemilik_kos.request.updateStatus');
 });
 
 Route::middleware(['role:penghuni'])->group(function () {

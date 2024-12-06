@@ -57,12 +57,12 @@
         <!-- Button home dan pesanan -->
         <div class="navbar bg-neutral rounded-full border">
             <div class="flex-1">
-                <a class="btn btn-ghost text-xl text-white">Penghuni</a>
+                <a class="btn btn-ghost text-xl text-white">List Kamar</a>
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal px-2 text-white">
-                    <li><a class="font-bold hover:bg-gray-500">Home</a></li>
-                    <li><a class="font-bold hover:bg-gray-500">Pemesanan</a></li>
+                    <li><a href="/penghuni/index" class="font-bold hover:bg-gray-500">Home</a></li>
+                    <li><a href="/penghuni/pemesanan/index" class="font-bold hover:bg-gray-500">Pemesanan</a></li>
                 </ul>
             </div>
         </div>

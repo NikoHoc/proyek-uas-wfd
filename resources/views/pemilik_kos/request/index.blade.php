@@ -3,6 +3,16 @@
 @section('content')
 <!-- Main Layout -->
 <div class="flex h-screen">
+    @if (session('status'))
+    <script>
+        Swal.fire({
+            title: 'Sukses!',
+            text: "{{ session('status ') }}",
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    @endif
 
     <!-- Sidebar -->
     <aside class="w-64 bg-gray-200 p-6">
@@ -58,74 +68,42 @@
             <table class="table-auto w-full text-sm border-collapse">
                 <thead class="bg-gray-200">
                     <tr>
-                        <th class="border border-gray-300 px-4 py-2">No Kamar</th>
+                        <th class="border border-gray-300 px-4 py-2">Nama Kamar</th>
                         <th class="border border-gray-300 px-4 py-2">Username</th>
                         <th class="border border-gray-300 px-4 py-2">Status</th>
                         <th class="border border-gray-300 px-4 py-2">Terima</th>
-                        <th class="border border-gray-300 px-4 py-2">Batal</th>
+                        <th class="border border-gray-300 px-4 py-2">Tolak</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Row 1 -->
+                    @foreach ($pesanan as $order)
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">01</td>
-                        <td class="border border-gray-300 px-4 py-2">Adit</td>
-                        <td class="border border-gray-300 px-4 py-2">Menunggu Konfirmasi</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ $order->kamar->name }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ $order->pengguna->username }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ $order->status_pemesanan }}</td>
                         <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-success">
+                            <form action="{{ route('pemilik_kos.request.updateStatus', $order->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="Terima">
+                                <button type="submit" class="btn btn-success" {{ $order->status_pemesanan == 'Terima' ? 'disabled' : '' }}>
+                                    Terima
+                                </button>
+                            </form>
                         </td>
                         <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-error">
+                            <form action="{{ route('pemilik_kos.request.updateStatus', $order->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="Tolak">
+                                <button type="submit" class="btn btn-error" {{ $order->status_pemesanan == 'Tolak' ? 'disabled' : '' }}>
+                                    Tolak
+                                </button>
+                            </form>
                         </td>
                     </tr>
-                    <!-- Row 2 -->
-                    <tr>
-                        <td class="border border-gray-300 px-4 py-2">02</td>
-                        <td class="border border-gray-300 px-4 py-2">Ibnu</td>
-                        <td class="border border-gray-300 px-4 py-2">Terima</td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-success" checked>
-                        </td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-error">
-                        </td>
-                    </tr>
-                    <!-- Row 3 -->
-                    <tr>
-                        <td class="border border-gray-300 px-4 py-2">69</td>
-                        <td class="border border-gray-300 px-4 py-2">Joe</td>
-                        <td class="border border-gray-300 px-4 py-2">Batal</td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-success">
-                        </td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-error" checked>
-                        </td>
-                    </tr>
-                    <!-- Row 4 -->
-                    <tr>
-                        <td class="border border-gray-300 px-4 py-2">03</td>
-                        <td class="border border-gray-300 px-4 py-2">Mei</td>
-                        <td class="border border-gray-300 px-4 py-2">Terima</td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-success" checked>
-                        </td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-error">
-                        </td>
-                    </tr>
-                    <!-- Row 5 -->
-                    <tr>
-                        <td class="border border-gray-300 px-4 py-2">96</td>
-                        <td class="border border-gray-300 px-4 py-2">Alisa</td>
-                        <td class="border border-gray-300 px-4 py-2">Menunggu Konfirmasi</td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-success">
-                        </td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">
-                            <input type="checkbox" class="checkbox checkbox-error">
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

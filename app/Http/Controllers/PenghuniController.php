@@ -84,6 +84,11 @@ class PenghuniController extends Controller
 
     public function showPemesanan()
     {
-        return view('penghuni.pemesanan.index');
+        // Mengambil ID user yang sedang login
+        $username = Auth::id(); // Atau Auth::user()->id
+        $userId = Pengguna::query()->where('username', $username)->first()->id;
+
+        $listPesanan = Pesanan::where('id_pengguna', $userId)->get();
+        return view('penghuni.pemesanan.index', compact('listPesanan'));
     }
 }
