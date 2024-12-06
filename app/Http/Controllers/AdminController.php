@@ -238,4 +238,15 @@ class AdminController extends Controller
     
         return redirect()->route('admin.manage-users')->with('error', 'Data tidak ditemukan.');
     }
+
+    public function deleteKos($id) {
+        $kos = Kos::find($id);
+
+        if ($kos) {
+            $kos->delete();
+            return redirect()->route('admin.manage-users')->with('success', 'Kos berhasil dihapus.');
+        }
+    
+        return redirect()->route('admin.manage-users')->with('error', 'Kos tidak ditemukan.');
+    }
 }

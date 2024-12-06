@@ -119,7 +119,7 @@
                                     </g>
                                 </svg>
                             </a>
-                            <form action="{{ route('admin.manage-users.delete', $k['id']) }}" method="POST" class="delete-form" style="display:inline;">
+                            <form action="{{ route('admin.manage-users.kos.delete', $k['id']) }}" method="POST" class="delete-form" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm text-white" style="background-color: #E74C3C">

@@ -37,12 +37,13 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/manage-users', [AdminController::class, 'manageUsers'])->name('admin.manage-users');
     Route::delete('/admin/manage-users/delete/{pengguna:id}', [AdminController::class, 'deleteUser'])->name('admin.manage-users.delete');
+    Route::delete('/admin/manage-users/delete/kos/{kos:id}', [AdminController::class, 'deleteKos'])->name('admin.manage-users.kos.delete');
 
     Route::get('/admin/form-pemilik', [AdminController::class, 'formKos'])->name('admin.form-pemilik');
     Route::post('/admin/form-pemilik/add-kos', [AdminController::class, 'addKos'])->name('admin.form-pemilik.add-kos');
     Route::get('/admin/form-pemilik/edit/{kos:id}', [AdminController::class, 'formEditKos'])->name('admin.form-pemilik.edit');
     Route::post('/admin/form-pemilik/edit/{kos:id}', [AdminController::class, 'editKos'])->name('admin.form-pemilik.edit');
-
+    
     Route::get('/admin/form-users', [AdminController::class, 'formAddUsers'])->name('admin.form-users');
     Route::post('/admin/form-users/add-user', [AdminController::class, 'addUsers'])->name('admin.form-users.add-user');
     Route::get('/admin/form-users/edit/{pengguna:id}', [AdminController::class, 'formEditUsers'])->name('admin.form-users.edit');
