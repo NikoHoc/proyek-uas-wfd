@@ -8,13 +8,12 @@
         <button class="btn btn-ghost">Pemesanan</button>
     </div> --}}
 
-    <div class="navbar bg-neutral rounded-full border">
+    <div class="navbar bg-gray-800 rounded-full border">
         <div class="flex-1">
             <a class="btn btn-ghost text-xl text-white">Penghuni</a>
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-2 text-white">
-                <li><a class="font-bold hover:bg-gray-500">Home</a></li>
                 <li><a class="font-bold hover:bg-gray-500">Pemesanan</a></li>
                 <li><a class="btn-ghost font-bold hover:bg-gray-500" href="#" id="logout-link">Logout</a></li>
             </ul>

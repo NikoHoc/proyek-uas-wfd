@@ -16,7 +16,7 @@
     @endif
 
     <!-- Sidenav -->
-    <aside class="w-128 bg-base-200 h-full p-4 space-y-4">
+    <aside class="w-128 bg-gray-800 text-white h-full p-4 space-y-4">
         <h1 class="text-4xl font-bold mb-4" id="kos-name">Nama Kos</h1>
         <p><strong>Contact Person:</strong> <span id="kos-contact">Nama Orang</span></p>
         <p><strong>Alamat Kos:</strong> <span id="kos-address">Jl. Contoh No.1</span></p>
@@ -25,7 +25,7 @@
 
 
         <!-- Review Card 1 -->
-        <div class="card bg-white shadow-lg ">
+        <div class="card bg-neutral shadow-lg text-white ">
             <div class="card-body">
                 <h3 class="card-title">Nama Orang</h3>
                 <p>⭐⭐⭐⭐⭐</p>
@@ -34,7 +34,7 @@
         </div>
 
 
-        <div class="card bg-white shadow-lg">
+        <div class="card bg-neutral shadow-lg text-white">
             <div class="card-body">
                 <h3 class="card-title">Nama Orang</h3>
                 <p>⭐⭐⭐⭐</p>
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="card bg-white shadow-lg ">
+        <div class="card bg-neutral shadow-lg text-white ">
             <div class="card-body">
                 <h3 class="card-title">Nama Orang</h3>
                 <p>⭐⭐⭐</p>
@@ -55,7 +55,7 @@
     <main class="flex-1 p-6 overflow-y-auto">
 
         <!-- Button home dan pesanan -->
-        <div class="navbar bg-neutral rounded-full border">
+        <div class="navbar bg-gray-800 rounded-full border">
             <div class="flex-1">
                 <a class="btn btn-ghost text-xl text-white">List Kamar</a>
             </div>
@@ -70,15 +70,10 @@
 
         <!-- Search Bar -->
         <div class="flex justify-between mb-6 my-6">
-            <div class="form-control w-3/4">
+            <div class="form-control w-screen">
                 <div class="input-group">
                     <input type="text" placeholder="Search kamar..." class="input input-bordered w-full" />
                 </div>
-            </div>
-            <div class="flex space-x-4">
-                <button class="btn btn-outline">Ascending</button>
-                <button class="btn btn-outline">Descending</button>
-                <button class="btn btn-outline">Filter</button>
             </div>
         </div>
 
@@ -98,7 +93,7 @@
                         <!-- Form untuk memesan kamar -->
                         <form action="{{ route('penghuni.kos.pesan', ['kamarId' => $kamar->id]) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary">Pesan</button>
+                            <button type="submit" class="btn btn-neutral">Pesan</button>
                         </form>
                     </div>
                 </div>

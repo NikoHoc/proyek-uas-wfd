@@ -19,10 +19,10 @@
                 <input type="password" name="password" placeholder="Enter your password" class="input input-bordered w-full" required>
             </div>
             <div class="mt-4">
-                <button type="submit" class="btn btn-primary w-full">Login</button>
+                <button type="submit" class="btn btn-neutral w-full">Login</button>
             </div>
             <div class="mt-4 text-center">
-                <a href="{{ route('authentication.register') }}" class="link link-primary">Don't have an account? Register</a>
+                <a href="{{ route('authentication.register') }}" class="link link-neutral">Don't have an account? Register</a>
             </div>
         </form>
     </div>

@@ -37,10 +37,10 @@
                 <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" class="input input-bordered w-full" required>
             </div>
             <div class="mt-4">
-                <button type="submit" class="btn btn-primary w-full">Register</button>
+                <button type="submit" class="btn btn-neutral w-full">Register</button>
             </div>
             <div class="mt-4 text-center">
-                <a href="{{ route('authentication.login') }}" class="link link-primary">Already have account? Sign in</a>
+                <a href="{{ route('authentication.login') }}" class="link link-neutral">Already have account? Sign in</a>
             </div>
         </form>
     </div>

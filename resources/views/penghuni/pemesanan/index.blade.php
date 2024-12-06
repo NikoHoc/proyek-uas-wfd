@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mx-auto py-4">
-    <div class="navbar bg-neutral rounded-full border">
+    <div class="navbar bg-gray-800 rounded-full border">
         <div class="flex-1">
             <a class="btn btn-ghost text-xl text-white">Pemesanan</a>
         </div>
