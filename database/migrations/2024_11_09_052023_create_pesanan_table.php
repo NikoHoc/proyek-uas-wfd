@@ -13,9 +13,6 @@ return new class extends Migration
     {
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('tanggal_pesan');
-            $table->dateTime('tanggal_checkout');
-            $table->string('status_pembayaran');
             $table->string('status_pemesanan');
             $table->unsignedBigInteger('id_pengguna');
             $table->foreign('id_pengguna')->references('id')->on('pengguna')->onDelete('cascade');
