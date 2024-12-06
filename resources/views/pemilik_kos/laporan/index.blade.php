@@ -27,7 +27,6 @@
         @endforeach
     </aside>
 
-
     <!-- Main Content -->
     <div class="flex-1 p-6">
 
@@ -63,51 +62,26 @@
                 <thead>
                     <tr class="bg-gray-300">
                         <th class="border border-gray-300 px-4 py-2 text-left">ID Kamar</th>
-                        <th class="border border-gray-300 px-4 py-2 text-left">No Kamar</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Nama Kamar</th>
                         <th class="border border-gray-300 px-4 py-2 text-left">Status</th>
                         <th class="border border-gray-300 px-4 py-2 text-left">Harga</th>
                         <th class="border border-gray-300 px-4 py-2 text-left">Deskripsi</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($listKamar as $kamar)
                     <tr>
-                        <td class="border border-gray-300 px-4 py-2">1</td>
-                        <td class="border border-gray-300 px-4 py-2">01</td>
-                        <td class="border border-gray-300 px-4 py-2">Dipesan</td>
-                        <td class="border border-gray-300 px-4 py-2">Rp 15.000.000</td>
-                        <td class="border border-gray-300 px-4 py-2">-</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ $kamar->id }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ $kamar->name }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ $kamar->status }}</td>
+                        <td class="border border-gray-300 px-4 py-2">Rp {{ number_format($kamar->harga, 0, ',', '.') }}</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ $kamar->deskripsi }}</td>
                     </tr>
-                    <tr>
-                        <td class="border border-gray-300 px-4 py-2">2</td>
-                        <td class="border border-gray-300 px-4 py-2">02</td>
-                        <td class="border border-gray-300 px-4 py-2">Kosong</td>
-                        <td class="border border-gray-300 px-4 py-2">Rp 15.000.000</td>
-                        <td class="border border-gray-300 px-4 py-2">-</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-300 px-4 py-2">3</td>
-                        <td class="border border-gray-300 px-4 py-2">03</td>
-                        <td class="border border-gray-300 px-4 py-2">Dipesan</td>
-                        <td class="border border-gray-300 px-4 py-2">Rp 15.000.000</td>
-                        <td class="border border-gray-300 px-4 py-2">-</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-300 px-4 py-2">4</td>
-                        <td class="border border-gray-300 px-4 py-2">69</td>
-                        <td class="border border-gray-300 px-4 py-2">Kosong</td>
-                        <td class="border border-gray-300 px-4 py-2">Rp 15.000.000</td>
-                        <td class="border border-gray-300 px-4 py-2">-</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-300 px-4 py-2">5</td>
-                        <td class="border border-gray-300 px-4 py-2">96</td>
-                        <td class="border border-gray-300 px-4 py-2">Dipesan</td>
-                        <td class="border border-gray-300 px-4 py-2">Rp 15.000.000</td>
-                        <td class="border border-gray-300 px-4 py-2">-</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
+
 
     </div>
 </div>

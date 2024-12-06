@@ -3,14 +3,26 @@
 @section('content')
 <!-- Layout -->
 <div class="flex h-screen">
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: "{{ session('success ') }}", // Perbaiki dengan menghapus spasi ekstra
+            showConfirmButton: false,
+            timer: 3000, // Tampilkan selama 3 detik
+        });
+    </script>
+    @endif
+
 
     <!-- Sidebar -->
     <aside class="w-64 bg-gray-200 p-6">
-        @foreach ($kos as $item)
-        <h1 class="text-2xl font-bold mb-6">{{ $item->name }}</h1>
+        @if ($kos)
+        <h1 class="text-2xl font-bold mb-6">{{ $kos->name }}</h1>
         <ul class="space-y-4">
             <li><strong>Contact Person:</strong> Nama Orang </li>
-            <li><strong>Alamat Kos:</strong> {{ $item->alamat }}</li>
+            <li><strong>Alamat Kos:</strong> {{ $kos->alamat }}</li>
             <li><strong>Rating:</strong> ⭐⭐⭐⭐</li>
             <li><strong>Catatan tambahan:</strong> -</li>
         </ul>
@@ -24,7 +36,9 @@
                 </svg>
             </button>
         </div>
-        @endforeach
+        @else
+        <p>Kos tidak ditemukan.</p>
+        @endif
     </aside>
 
 
@@ -46,51 +60,53 @@
             </div>
         </header>
 
-        <!-- Main Content -->
-        <div class="my-6">
-            <!-- No Kamar -->
-            <div class="mb-4">
-                <label for="no-kamar" class="block text-gray-700 font-medium mb-2">No Kamar</label>
-                <input type="text" id="no-kamar" name="no-kamar"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
-                    placeholder="Masukkan nomor kamar">
-            </div>
+        <form action="{{ route('pemilik.laporan.kamar.store', ['id_kos' => $kos->id]) }}" method="POST">
+            @csrf <!-- CSRF Token untuk keamanan -->
+            <div class="my-6">
+                <!-- No Kamar -->
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-medium mb-2">Nama Kamar</label>
+                    <input type="text" id="name" name="name"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+                        placeholder="Masukkan nomor kamar">
+                </div>
 
-            <!-- Status -->
-            <div class="mb-4">
-                <label for="status" class="block text-gray-700 font-medium mb-2">Status</label>
-                <select id="status" name="status"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
-                    <option value="" disabled selected>Pilih status kamar</option>
-                    <option value="tersedia">Tersedia</option>
-                    <option value="terisi">Terisi</option>
-                </select>
-            </div>
+                <!-- Status -->
+                <div class="mb-4">
+                    <label for="status" class="block text-gray-700 font-medium mb-2">Status</label>
+                    <select id="status" name="status"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        <option value="" disabled selected>Pilih status kamar</option>
+                        <option value="ready">ready</option>
+                    </select>
+                </div>
 
-            <!-- Harga Kamar -->
-            <div class="mb-4">
-                <label for="harga-kamar" class="block text-gray-700 font-medium mb-2">Harga Kamar</label>
-                <input type="number" id="harga-kamar" name="harga-kamar"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
-                    placeholder="Masukkan harga kamar">
-            </div>
+                <!-- Harga Kamar -->
+                <div class="mb-4">
+                    <label for="harga" class="block text-gray-700 font-medium mb-2">Harga Kamar</label>
+                    <input type="number" id="harga" name="harga"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+                        placeholder="Masukkan harga kamar">
+                </div>
 
-            <!-- Deskripsi -->
-            <div class="mb-6">
-                <label for="deskripsi" class="block text-gray-700 font-medium mb-2">Deskripsi Kamar</label>
-                <textarea id="deskripsi" name="deskripsi" rows="4"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
-                    placeholder="Tambahkan deskripsi kamar"></textarea>
-            </div>
+                <!-- Deskripsi -->
+                <div class="mb-6">
+                    <label for="deskripsi" class="block text-gray-700 font-medium mb-2">Deskripsi Kamar</label>
+                    <textarea id="deskripsi" name="deskripsi" rows="4"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+                        placeholder="Tambahkan deskripsi kamar"></textarea>
+                </div>
 
-            <!-- Submit Button -->
-            <div class="text-center">
-                <button type="submit"
-                    class=" bg-gray-700 hover:bg-gray-500 text-white font-medium py-2 px-4 rounded-md">
-                    Simpan
-                </button>
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit"
+                        class=" bg-gray-700 hover:bg-gray-500 text-white font-medium py-2 px-4 rounded-md">
+                        Simpan
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
+
     </div>
 </div>
 

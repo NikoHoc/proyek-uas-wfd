@@ -12,7 +12,15 @@ class Kamar extends Model
     use HasFactory;
 
     protected $table = 'kamar';
-    
+
+    protected $fillable = [
+        'name',
+        'status',
+        'harga',
+        'deskripsi',
+        'id_kos'
+    ];
+
     public function kos(): BelongsTo {
         return $this->belongsTo(Kos::class, 'id_kos');
     }

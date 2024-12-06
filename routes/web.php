@@ -42,7 +42,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::post('/admin/form-users/add-user', [AdminController::class, 'addUsers'])->name('admin.form-users.add-user');
     Route::get('/admin/form-users/edit/{pengguna:id}', [AdminController::class, 'formEditUsers'])->name('admin.form-users.edit');
     Route::post('/admin/form-users/edit/{pengguna:id}', [AdminController::class, 'editUser'])->name('admin.form-users.edit');
-    
+
 });
 
 Route::middleware(['role:pemilik'])->group(function () {
@@ -50,6 +50,7 @@ Route::middleware(['role:pemilik'])->group(function () {
     Route::get('/pemilik_kos/request', [PemilikController::class, 'indexRequest'])->name('pemilik.request.index');
     Route::get('/pemilik_kos/laporan', [PemilikController::class, 'indexLaporan'])->name('pemilik.laporan.index');
     Route::get('/pemilik_kos/laporan/addKamar', [PemilikController::class, 'addKamar'])->name('pemilik.laporan.kamar.index');
+    Route::post('/pemilik_kos/laporan/addKamar/{id_kos}', [PemilikController::class, 'storeKamar'])->name('pemilik.laporan.kamar.store');
 });
 
 Route::middleware(['role:penghuni'])->group(function () {
