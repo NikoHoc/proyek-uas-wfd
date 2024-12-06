@@ -88,7 +88,8 @@ class PenghuniController extends Controller
         $username = Auth::id(); // Atau Auth::user()->id
         $userId = Pengguna::query()->where('username', $username)->first()->id;
 
-        $listPesanan = Pesanan::where('id_pengguna', $userId)->get();
+        $listPesanan = Pesanan::with(['kamar.kos'])
+            ->where('id_pengguna', $userId)->get();
         return view('penghuni.pemesanan.index', compact('listPesanan'));
     }
 }

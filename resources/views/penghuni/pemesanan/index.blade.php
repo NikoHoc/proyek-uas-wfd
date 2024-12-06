@@ -19,6 +19,7 @@
             <table class="table-auto w-full border-collapse border border-gray-300 bg-white shadow-md rounded-lg">
                 <thead class="bg-gray-200">
                     <tr>
+                        <th class="px-6 py-3 border border-gray-300 text-left">Nama Kos</th>
                         <th class="px-6 py-3 border border-gray-300 text-left">No Kamar</th>
                         <th class="px-6 py-3 border border-gray-300 text-left">Nama Kamar</th>
                         <th class="px-6 py-3 border border-gray-300 text-left">Status</th>
@@ -28,6 +29,7 @@
                 <tbody>
                     @foreach($listPesanan as $pesanan)
                     <tr>
+                        <td class="px-6 py-3 border border-gray-300">{{ $pesanan->kamar->kos->name }}</td>
                         <td class="px-6 py-3 border border-gray-300">{{ $pesanan->id_kamar }}</td>
                         <td class="px-6 py-3 border border-gray-300">{{ $pesanan->kamar->name }}</td>
                         <td class="px-6 py-3 border border-gray-300">{{ $pesanan->status_pemesanan }}</td>
