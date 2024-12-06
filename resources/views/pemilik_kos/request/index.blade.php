@@ -19,7 +19,7 @@
             @foreach ($kos as $item)
                 <h1 class="text-2xl font-bold mb-6">{{ $item->name }}</h1>
                 <ul class="space-y-4">
-                    <li><strong>Contact Person:</strong> Nama Orang </li>
+                    <li><strong>Contact Person:</strong> {{ $item->pengguna->username }} </li>
                     <li><strong>Alamat Kos:</strong> {{ $item->alamat }}</li>
                     <li><strong>Rating:</strong> ⭐⭐⭐⭐</li>
                     <li><strong>Catatan tambahan:</strong> -</li>
@@ -27,7 +27,7 @@
                 <div class="absolute bottom-6">
                     <form id="logout-form" action="{{ route('authentication.logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-ghost flex items-center space-x-2">
+                        <button type="submit" class="btn btn-ghost flex items-center space-x-2 hover:text-white hover:bg-red-600"">
                             <span>Logout</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -46,14 +46,9 @@
             <header class="bg-white shadow p-4 border-b">
                 <div class="container mx-auto flex justify-between items-center">
                     <!-- Tombol Menu -->
-                    <button
-                        class="flex flex-col items-center justify-center w-10 h-6 gap-1.5 bg-white rounded-md hover:bg-gray-200">
-                        <span class="block w-7 h-0.5 bg-black rounded-sm"></span>
-                        <span class="block w-7 h-0.5 bg-black rounded-sm"></span>
-                        <span class="block w-7 h-0.5 bg-black rounded-sm"></span>
-                    </button>
+                    <span class="text-gray-600 font-bold text-2xl">Request</span>
                     <!-- User Info -->
-                    <span class="text-gray-600 font-medium">User</span>
+                    <span class="text-gray-600 font-bold text-2xl">{{ Auth::user()->username }}</span>
                 </div>
             </header>
 
@@ -67,17 +62,17 @@
                     </svg>
                     Back
                 </a>
-                <!-- Input Cari -->
+                {{-- <!-- Input Cari -->
                 <div class="form-control">
                     <div class="input-group">
                         <input type="text" placeholder="Cari.." class="input input-bordered" />
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- Table -->
-            <div class="overflow-x-auto bg-white rounded-lg shadow-lg">
+            <div class="overflow-x-auto bg-white rounded-lg shadow-lg p-5">
 
-                <table class="table-auto w-full text-sm border-collapse">
+                <table id="table-request" class="table-auto w-full text-sm border-collapse">
                     <thead class="bg-gray-200">
                         <tr>
                             <th class="border border-gray-300 px-4 py-2">Nama Kamar</th>
@@ -128,7 +123,13 @@
 @endsection
 
 @section('library-js')
-    <script>
+<script>
+    $(document).ready(function() {
+        $('#table-request').DataTable({
+            language: {
+                searchPlaceholder: "Cari Request", 
+            }
+        });
         $('#logout-form button').on('click', function(e) {
             e.preventDefault();
             Swal.fire({
@@ -169,5 +170,6 @@
                 }
             });
         });
-    </script>
+    });
+</script>
 @endsection

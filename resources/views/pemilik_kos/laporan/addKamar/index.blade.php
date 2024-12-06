@@ -20,7 +20,7 @@
         @if ($kos)
         <h1 class="text-2xl font-bold mb-6">{{ $kos->name }}</h1>
         <ul class="space-y-4">
-            <li><strong>Contact Person:</strong> Nama Orang </li>
+            <li><strong>Contact Person:</strong> {{ $kos->pengguna->username }} </li>
             <li><strong>Alamat Kos:</strong> {{ $kos->alamat }}</li>
             <li><strong>Rating:</strong> ⭐⭐⭐⭐</li>
             <li><strong>Catatan tambahan:</strong> -</li>
@@ -28,7 +28,7 @@
         <div class="absolute bottom-6">
             <form id="logout-form" action="{{ route('authentication.logout') }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-ghost flex items-center space-x-2">
+                <button type="submit" class="btn btn-ghost flex items-center space-x-2 hover:text-white hover:bg-red-600"">
                     <span>Logout</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -51,14 +51,9 @@
         <header class="bg-white shadow p-4 border-b">
             <div class="container mx-auto flex justify-between items-center">
                 <!-- Tombol Menu -->
-                <button
-                    class="flex flex-col items-center justify-center w-10 h-6 gap-1.5 bg-white rounded-md hover:bg-gray-200">
-                    <span class="block w-7 h-0.5 bg-black rounded-sm"></span>
-                    <span class="block w-7 h-0.5 bg-black rounded-sm"></span>
-                    <span class="block w-7 h-0.5 bg-black rounded-sm"></span>
-                </button>
+                <span class="text-gray-600 font-bold text-2xl">Form Kamar</span>
                 <!-- User Info -->
-                <span class="text-gray-600 font-medium">User</span>
+                <span class="text-gray-600 font-bold text-2xl">{{ Auth::user()->username }}</span>
             </div>
         </header>
 

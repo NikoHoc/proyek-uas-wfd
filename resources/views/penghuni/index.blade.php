@@ -13,9 +13,15 @@
             <a class="btn btn-ghost text-xl text-white">Penghuni</a>
         </div>
         <div class="flex-none">
-            <ul class="menu menu-horizontal px-2 text-white">
-                <li><a class="font-bold hover:bg-gray-500">Pemesanan</a></li>
-                <li><a class="btn-ghost font-bold hover:bg-gray-500" href="#" id="logout-link">Logout</a></li>
+            <ul class="menu menu-horizontal px-2 text-white gap-4">
+                <li><a href="/penghuni/index" class="font-bold bg-gray-500">Home</a></li>
+                <li><a href="/penghuni/pemesanan/index" class="font-bold hover:bg-gray-500">Pemesanan</a></li>
+                <li>
+                    <form id="logout-form" class="hover:bg-red-500" action="{{ route('authentication.logout') }}" method="POST">
+                        @csrf
+                        <a class="font-bold " id="logout-link">Logout</a>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
@@ -41,11 +47,6 @@
     </div>
 </div>
 </div>
-
-<form id="logout-form" action="{{ route('authentication.logout') }}" method="POST" style="display: none;">
-    @csrf
-    <a class="btn btn-primary" href="#" id="logout-link">Logout</a>
-</form>
 @endsection
 
 @section('library-js')

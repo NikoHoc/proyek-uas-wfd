@@ -7,16 +7,21 @@
             <a class="btn btn-ghost text-xl text-white">Pemesanan</a>
         </div>
         <div class="flex-none">
-            <ul class="menu menu-horizontal px-2 text-white">
+            <ul class="menu menu-horizontal px-2 text-white gap-4">
                 <li><a href="/penghuni/index" class="font-bold hover:bg-gray-500">Home</a></li>
-                <li><a href="/penghuni/pemesanan/index" class="font-bold hover:bg-gray-500">Pemesanan</a></li>
-                <li><a class="btn-ghost font-bold hover:bg-gray-500" href="#" id="logout-link">Logout</a></li>
+                <li><a href="/penghuni/pemesanan/index" class="font-bold bg-gray-500">Pemesanan</a></li>
+                <li>
+                    <form id="logout-form" class="hover:bg-red-500" action="{{ route('authentication.logout') }}" method="POST">
+                        @csrf
+                        <a class="font-bold " id="logout-link">Logout</a>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
     <div class="flex items-center justify-center my-32">
         <div class="w-full max-w-screen-lg mx-auto">
-            <table class="table-auto w-full border-collapse border border-gray-300 bg-white shadow-md rounded-lg">
+            <table id="table-pesanan" class="table-auto w-full border-collapse border border-gray-300 bg-white shadow-md rounded-lg">
                 <thead class="bg-gray-200">
                     <tr>
                         <th class="px-6 py-3 border border-gray-300 text-left">Nama Kos</th>
@@ -44,5 +49,28 @@
 @endsection
 
 @section('library-js')
-
+<script>
+    $(document).ready(function() {
+        $('#table-pesanan').DataTable({
+            language: {
+                searchPlaceholder: "Cari pesanan", 
+            }
+        });
+        document.getElementById('logout-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You will be logged out!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, logout!',
+                cancelButtonText: 'Cancel',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('logout-form').submit();
+                }
+            });
+        });
+    });
+</script>
 @endsection
