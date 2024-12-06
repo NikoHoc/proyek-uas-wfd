@@ -36,8 +36,13 @@ Route::post('/authentication/logout', [AuthenticationController::class, 'logout'
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/manage-users', [AdminController::class, 'manageUsers'])->name('admin.manage-users');
+    Route::delete('/admin/manage-users/delete/{pengguna:id}', [AdminController::class, 'deleteUser'])->name('admin.manage-users.delete');
     Route::get('/admin/form-pemilik', [AdminController::class, 'formPemilik'])->name('admin.form-pemilik');
-    Route::get('/admin/form-penghuni', [AdminController::class, 'formPenghuni'])->name('admin.form-penghuni');
+    Route::get('/admin/form-users', [AdminController::class, 'formAddUsers'])->name('admin.form-users');
+    Route::post('/admin/form-users/add-user', [AdminController::class, 'addUsers'])->name('admin.form-users.add-user');
+    Route::get('/admin/form-users/edit/{pengguna:id}', [AdminController::class, 'formEditUsers'])->name('admin.form-users.edit');
+    Route::post('/admin/form-users/edit/{pengguna:id}', [AdminController::class, 'editUser'])->name('admin.form-users.edit');
+    
 });
 
 Route::middleware(['role:pemilik'])->group(function () {

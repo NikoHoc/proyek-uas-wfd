@@ -6,6 +6,7 @@ use App\Models\Kos;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -48,9 +49,101 @@ class AdminController extends Controller
         ]);
     }
 
-    public function formPenghuni () {
-        return view('admin.form-penghuni.index', [
-            'title' => 'Form Penghuni Kos'
+    // show add user form
+    public function formAddUsers () {
+        $roles = DB::table('role')
+               ->whereIn('id', [2, 3])
+               ->get();
+        return view('admin.form-users.index', [
+            'title' => 'Form Add Users',
+            'roles' => $roles
         ]);
+    }
+
+    public function addUsers (Request $request) {
+        $request->validate([
+            'role' => 'required',
+            'username' => 'required',
+            'password' => 'required|confirmed', 
+        ]);
+
+        $password = bcrypt($request->password);
+        $result = DB::table('pengguna')->insert([
+            'username' => $request->username,
+            'password' => $password,
+            'id_role' => $request->role,
+            'created_at' => now(), 
+            'updated_at' => now(), 
+        ]);
+
+        if ($result) {
+            return response()->json([
+                'success' => true,
+                'message' => 'User berhasil ditambahkan!',
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal menambahkan user.',
+            ]);
+        }
+    }
+
+    // show edit user form
+    public function formEditUsers ($id) {
+        $user = Pengguna::with('role')->find($id);
+        return view('admin.form-users.index', [
+            'title' => 'Form Edit Users',
+            'user' => $user
+        ]);
+    }
+
+    public function editUser (Request $request, $id) {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'nullable|confirmed',
+        ]);
+    
+        $user = Pengguna::find($id);
+    
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User tidak ditemukan.',
+            ]);
+        }
+    
+        $user->username = $request->username;
+    
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->updated_at = now();
+    
+        $result = $user->save();
+    
+        if ($result) {
+            return response()->json([
+                'success' => true,
+                'message' => 'User berhasil diperbarui!',
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal memperbarui user.',
+            ]);
+        }
+    }
+
+    public function deleteUser($id) {
+        $user = Pengguna::find($id);
+
+        if ($user) {
+            $user->delete();
+            return redirect()->route('admin.manage-users')->with('success', 'Data berhasil dihapus.');
+        }
+    
+        return redirect()->route('admin.manage-users')->with('error', 'Data tidak ditemukan.');
     }
 }

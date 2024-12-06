@@ -9,13 +9,13 @@
         </div>
         <!-- Menu -->
         <nav class="space-y-4">
-            <a href="{{ route('admin.index') }}" class="{{ Route::is('admin') ? 'bg-gray-700 text-white' : '' }} flex items-center space-x-2 text-gray-200 hover:text-white hover:bg-gray-700 rounded-md p-2 transition">
+            <a href="{{ route('admin.index') }}" class="{{ Route::is('admin.index') ? 'bg-gray-700 text-white' : '' }} flex items-center space-x-2 text-gray-200 hover:text-white hover:bg-gray-700 rounded-md p-2 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
                     <path fill="currentColor" d="m12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81zM12 3L2 12h3v8h6v-6h2v6h6v-8h3z" />
                 </svg>
                 <span class="menu-label text-lg">Dashboard</span>
             </a>
-            <a href="{{ route('admin.manage-users') }}" class="{{ Route::is('admin.manage_users') ? 'bg-gray-700 text-white' : '' }} flex items-center space-x-2 text-gray-200 hover:text-white hover:bg-gray-700 rounded-md p-2 transition">
+            <a href="{{ route('admin.manage-users') }}" class="{{ Route::is('admin.manage-users') ? 'bg-gray-700 text-white' : '' }} flex items-center space-x-2 text-gray-200 hover:text-white hover:bg-gray-700 rounded-md p-2 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0a3 3 0 0 1 6 0Z" />
                 </svg>
