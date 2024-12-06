@@ -73,6 +73,8 @@
             </div>
         </div>
 
+        <!-- Room Cards -->
+        @if ($listKamar->isNotEmpty())
         <!-- Search Bar -->
         <div class="flex justify-between mb-6 my-6">
             <div class="form-control w-screen">
@@ -81,8 +83,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Room Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             @foreach($listKamar as $kamar)
             <div class="card bg-white shadow-lg" data-id-kos="{{ $kamar->id_kos }}">
@@ -105,6 +105,9 @@
             </div>
             @endforeach
         </div>
+        @else
+        <h1 class="text-3xl font-bold text-center mt-5 ">Belum ada kamar tersedia</h1>
+        @endif
 
     </main>
 </div>

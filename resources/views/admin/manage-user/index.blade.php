@@ -10,7 +10,7 @@
 
     <div id="tab-buttons" class="flex justify-end gap-2"></div>
 
-    <div id="user-table" class="table-section transition-opacity duration-500 ease-in-out">
+    <div id="user-table" class="table-section transition-opacity duration-500 ease-in-out border p-5 rounded-lg">
         <div class="flex gap-2 justify-between mb-2">
             <h1 class="text-2xl font-bold mt-1">User Table</h1>
             <a href="{{ route('admin.form-users') }}" class="btn btn-accent text-xl">
@@ -70,7 +70,7 @@
         </table>
     </div>
 
-    <div id="pemilik-table" class="table-section hidden transition-opacity duration-500 ease-in-out">
+    <div id="pemilik-table" class="table-section hidden transition-opacity duration-500 ease-in-out border p-5 rounded-lg">
         <div class="flex gap-2 justify-between mb-2">
             <h1 class="text-2xl font-bold mt-1">Kos Table</h1>
             <a href="{{ route('admin.form-pemilik') }}" class="btn btn-accent text-xl">
@@ -104,13 +104,13 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $k['id'] }}</td>
                         <td>{{ $k['nama_kos'] }}</td>
-                        <td>{{ $k['alamat_kos'] }}</td>
+                        <td class="whitespace-nowrap">{{ $k['alamat_kos'] }}</td>
                         <td>{{ $k['jumlah_kamar'] }}</td>
                         <td>{{ $k['pemilik'] }}</td>
                         <td>{{ $k['total_review'] }}</td>
-                        <td>{{ \Carbon\Carbon::parse($k['created_at'])->format('d-m-Y - h:i') }}</td>
-                        <td>{{ \Carbon\Carbon::parse($k['updated_at'])->format('d-m-Y - h:i') }}</td>
-                        <td>
+                        <td class="whitespace-nowrap">{{ \Carbon\Carbon::parse($k['created_at'])->format('d-m-Y - h:i') }}</td>
+                        <td class="whitespace-nowrap">{{ \Carbon\Carbon::parse($k['updated_at'])->format('d-m-Y - h:i') }}</td>
+                        <td class="whitespace-nowrap">
                             <a href="{{ route('admin.form-pemilik.edit', $k['id']) }}" class="btn btn-secondary btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -135,7 +135,7 @@
         </table>
     </div>
 
-    <div id="penghuni-table" class="table-section hidden transition-opacity duration-500 ease-in-out">
+    <div id="penghuni-table" class="table-section hidden transition-opacity duration-500 ease-in-out border p-5 rounded-lg">
         <div class="flex gap-2 justify-between mb-2">
             <h1 class="text-2xl font-bold mt-1">Penghuni Table</h1>
             <a href="{{ route('admin.form-users') }}" class="btn btn-accent text-xl">

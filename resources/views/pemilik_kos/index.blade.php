@@ -67,7 +67,7 @@
             {{-- Pemilik belum punya kos --}}
             <div class="border rounded-md p-5">
                 <h1 class="text-xl font-bold">Anda belum memiliki kos, ayo buat terlebih dahulu!</h1>
-                <form method="POST" action="{{ route('kos.add-kos') }}">
+                <form  id="form-buat-kos" method="POST" action="{{ route('kos.add-kos') }}">
                     @csrf 
                     <div class="form-control mt-4">
                         <label class="label">
@@ -93,10 +93,6 @@
     </div>
 </div>
 
-<form id="logout-form" action="{{ route('authentication.logout') }}" method="POST" style="display: none;">
-    @csrf
-    <a class="btn btn-primary" href="#" id="logout-link">Logout</a>
-</form>
 @endsection
 
 @section('library-js')
@@ -136,7 +132,7 @@
                         timer: 2000,
                         showConfirmButton: false,
                     }).then(() => {
-                        $('form').submit();
+                        $('#form-buat-kos').submit();
                     });
                 }
             });

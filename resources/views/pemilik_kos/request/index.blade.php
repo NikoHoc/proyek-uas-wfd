@@ -62,12 +62,6 @@
                     </svg>
                     Back
                 </a>
-                {{-- <!-- Input Cari -->
-                <div class="form-control">
-                    <div class="input-group">
-                        <input type="text" placeholder="Cari.." class="input input-bordered" />
-                    </div>
-                </div> --}}
             </div>
             <!-- Table -->
             <div class="overflow-x-auto bg-white rounded-lg shadow-lg p-5">

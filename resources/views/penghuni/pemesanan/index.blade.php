@@ -19,7 +19,10 @@
             </ul>
         </div>
     </div>
-    <div class="flex items-center justify-center my-32">
+    <section id="greet-user">
+        <h1 class="text-3xl font-bold mt-5 ">Riwayat Pemesanan</h1>
+    </section>
+    <div class="flex items-center justify-center my-10">
         <div class="w-full max-w-screen-lg mx-auto">
             <table id="table-pesanan" class="table-auto w-full border-collapse border border-gray-300 bg-white shadow-md rounded-lg">
                 <thead class="bg-gray-200">

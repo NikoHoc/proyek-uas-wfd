@@ -62,7 +62,7 @@
         </div>
 
         <!-- Table -->
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto bg-white rounded-lg shadow-lg p-5">
             <table id="table-laporan" class="table-auto border-collapse border border-gray-300 w-full text-sm">
                 <thead>
                     <tr class="bg-gray-300">

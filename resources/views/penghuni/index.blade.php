@@ -10,7 +10,7 @@
 
     <div class="navbar bg-gray-800 rounded-full border">
         <div class="flex-1">
-            <a class="btn btn-ghost text-xl text-white">Penghuni</a>
+            <a class="btn btn-ghost text-xl text-white">Home</a>
         </div>
         <div class="flex-none">
             <ul class="menu menu-horizontal px-2 text-white gap-4">
@@ -26,26 +26,33 @@
         </div>
     </div>
 
+    <section id="greet-user">
+        <h1 class="text-3xl font-bold mt-5 ">Halo {{ Auth::user()->username }}</h1>
+    </section>
+    @if ($listKos->isNotEmpty())
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         @foreach($listKos as $kos)
-        <a href="{{ url('/penghuni/kos/index') }}"
-            class="card bg-white shadow-lg rounded-lg overflow-hidden"
-            onclick="saveKosIdAndRedirect(event, '{{ $kos->id }}')">
-            <!-- Gambar -->
-            <figure class="h-40 bg-gray-300 flex justify-center items-center">
-                <span class="text-lg font-bold text-gray-700">GAMBAR</span>
-            </figure>
-            <!-- Isi Kartu -->
-            <div class="p-4 bg-gray-100">
-                <h3 class="text-lg font-bold">{{ $kos->name }}</h3>
-                <p class="text-gray-600 text-sm mt-2">{{ $kos->alamat }}</p>
-                <p class="text-gray-800 text-sm mt-2">Pemilik: {{ $kos->pengguna->username }}</p>
-                <p class="text-gray-800 text-sm mt-2">Total Kamar: {{ $kos->kamar_count }}</p>
-            </div>
-        </a>
+            <a href="{{ url('/penghuni/kos/index') }}"
+                class="card bg-white shadow-lg rounded-lg overflow-hidden"
+                onclick="saveKosIdAndRedirect(event, '{{ $kos->id }}')">
+                <!-- Gambar -->
+                <figure class="h-40 bg-gray-300 flex justify-center items-center">
+                    <span class="text-lg font-bold text-gray-700">GAMBAR</span>
+                </figure>
+                <!-- Isi Kartu -->
+                <div class="p-4 bg-gray-100">
+                    <h3 class="text-lg font-bold">{{ $kos->name }}</h3>
+                    <p class="text-gray-600 text-sm mt-2">{{ $kos->alamat }}</p>
+                    <p class="text-gray-800 text-sm mt-2">Pemilik: {{ $kos->pengguna->username }}</p>
+                    <p class="text-gray-800 text-sm mt-2">Total Kamar: {{ $kos->kamar_count }}</p>
+                </div>
+            </a>
         @endforeach
-    </div>
-</div>
+    </div>      
+    @else
+        <h1 class="text-3xl font-bold text-center mt-5 ">Belum ada kos tersedia</h1>
+    @endif
+    
 </div>
 @endsection
 
