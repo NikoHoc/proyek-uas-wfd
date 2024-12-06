@@ -11,6 +11,12 @@ class Kos extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'alamat',
+        'id_pengguna',
+    ];
+
     public function pengguna(): BelongsTo {
         return $this->belongsTo(Pengguna::class, 'id_pengguna');
     }

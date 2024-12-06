@@ -17,21 +17,42 @@ class PemilikController extends Controller
 
     public function showKos()
     {
-        // Mengambil ID user yang sedang login
-        $username = Auth::id(); // Atau Auth::user()->id
-        $userId = Pengguna::query()->where('username', $username)->first()->id;
+        $pengguna = Auth::user();
+        $idPengguna = $pengguna->id;
 
-        // Mengambil data kos berdasarkan id user yang login
-        $kos = Kos::query()
-            ->where('id_pengguna', $userId) // Menggunakan ID user yang login
-            ->get();
+        $kos = Kos::query()->where('id_pengguna', $idPengguna)->get();
+        $jumlahKos = $kos->count();
+
+        // // Mengambil data kos berdasarkan id pengguna 4
+        // $kos = Kos::query()
+        //     ->where('id_pengguna', 4) // Sesuaikan nama kolom 'user_id' dengan skema database Anda
+        //     ->get();
 
         // Kirim data ke view
         return view('pemilik_kos.index', [
-            "kos" => $kos
+            "kos" => $kos,
+            "jumlahKos" => $jumlahKos,
         ]);
     }
 
+    public function addKos(Request $request)
+    {
+        // Validasi data input
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
+        ]);
+
+        // Tambahkan data ke tabel 'kos'
+        Kos::create([
+            'name' => $validated['name'],
+            'alamat' => $validated['alamat'],
+            'id_pengguna' => Auth::user()->id, // Ambil ID pengguna login
+        ]);
+
+        // Redirect ke halaman kos dengan pesan sukses
+        return redirect()->route('pemilik.index')->with('success', 'Kos berhasil dibuat!');
+    }
 
     public function indexRequest()
     {

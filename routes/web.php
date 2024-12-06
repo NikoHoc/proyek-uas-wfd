@@ -47,6 +47,7 @@ Route::middleware(['role:admin'])->group(function () {
 
 Route::middleware(['role:pemilik'])->group(function () {
     Route::get('/pemilik_kos/index', [PemilikController::class, 'showKos'])->name('pemilik.index');
+    Route::post('/pemilik_kos/buat-kos', [PemilikController::class, 'addKos'])->name('kos.add-kos');
     Route::get('/pemilik_kos/request', [PemilikController::class, 'indexRequest'])->name('pemilik.request.index');
     Route::get('/pemilik_kos/laporan', [PemilikController::class, 'indexLaporan'])->name('pemilik.laporan.index');
     Route::get('/pemilik_kos/laporan/addKamar', [PemilikController::class, 'addKamar'])->name('pemilik.laporan.kamar.index');
