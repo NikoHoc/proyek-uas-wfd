@@ -4,19 +4,34 @@
 
 <section id="overview">
     <h1 class="text-2xl font-bold">Total Overview</h1>
-    <div class="flex gap-4 mt-2">
-        <div class="stats shadow">
+    <div class="flex gap-10 mt-2">
+        <div class="stats shadow" style="background-color:#E74C3C">
             <div class="stat">
-              <div class="stat-title">Jumlah Penghuni</div>
-              <div class="stat-value">2</div>
+              <div class="stat-title font-bold">Jumlah Penghuni</div>
+              <div class="stat-value">{{ $penghuni }}</div>
             
               {{-- <button class="btn btn-primary">Lihat</button> --}}
             </div>
         </div>
-        <div class="stats shadow">
+        <div class="stats shadow" style="background-color:#2ECC71">
             <div class="stat">
-              <div class="stat-title">Jumlah Kos</div>
-              <div class="stat-value">5</div>
+              <div class="stat-title font-bold">Jumlah Kos</div>
+              <div class="stat-value">{{ $kos }}</div>
+              {{-- <button class="btn btn-primary">Lihat</button> --}}
+            </div>
+        </div>
+        <div class="stats shadow " style="background-color:#F1C40F">
+            <div class="stat">
+              <div class="stat-title font-bold">Jumlah Pesanan</div>
+              <div class="stat-value">{{ $pesanan }}</div>
+              {{-- <button class="btn btn-primary">Lihat</button> --}}
+            </div>
+        </div>
+        
+        <div class="stats shadow" style="background-color:#3498DB">
+            <div class="stat">
+              <div class="stat-title font-bold">Jumlah Review Penghuni</div>
+              <div class="stat-value">{{ $custReview }}</div>
               {{-- <button class="btn btn-primary">Lihat</button> --}}
             </div>
         </div>
@@ -27,7 +42,7 @@
 
 <section id="shortcut" class="mt-8">
     <h1 class="text-2xl font-bold">Shortcut</h1>
-    <div class="flex gap-4 mt-2">
+    <div class="flex gap-10 mt-2">
         <div>
             <a href="{{ route('admin.form-users') }}" class="btn btn-secondary text-xl font-semibold h-20 w-40">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

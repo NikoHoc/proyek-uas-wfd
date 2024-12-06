@@ -24,7 +24,7 @@ class Pengguna extends Authenticatable
     }
 
     public function kos(): HasMany{
-        return $this->hasMany(Kos::class);
+        return $this->hasMany(Kos::class, 'id_pengguna');
     }
 
     public function reviews(): HasMany {
