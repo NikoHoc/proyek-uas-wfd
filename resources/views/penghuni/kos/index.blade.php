@@ -82,7 +82,7 @@
                     <p>Harga kamar: Rp{{ number_format($kamar->harga, 0, ',', '.') }}</p>
                     <p>{{ $kamar->deskripsi }}</p>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Pesan</button>
+                        <a href="/penghuni/pemesanan/index" class="btn btn-primary">Pesan</a>
                     </div>
                 </div>
             </div>

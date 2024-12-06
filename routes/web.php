@@ -41,10 +41,14 @@ Route::middleware(['role:admin'])->group(function () {
 });
 
 Route::middleware(['role:pemilik'])->group(function () {
-    Route::get('/pemilik_kos/index', [PemilikController::class, 'index'])->name('pemilik.index');
+    Route::get('/pemilik_kos/index', [PemilikController::class, 'showKos'])->name('pemilik.index');
+    Route::get('/pemilik_kos/request', [PemilikController::class, 'indexRequest'])->name('pemilik.request.index');
+    Route::get('/pemilik_kos/laporan', [PemilikController::class, 'indexLaporan'])->name('pemilik.laporan.index');
+    Route::get('/pemilik_kos/laporan/addKamar', [PemilikController::class, 'addKamar'])->name('pemilik.laporan.kamar.index');
 });
 
 Route::middleware(['role:penghuni'])->group(function () {
     Route::get('/penghuni/index', [PenghuniController::class, 'showAllKos'])->name('penghuni.index');
     Route::get('/penghuni/kos/index', [PenghuniController::class, 'showAllKamar'])->name('penghuni.kos.index');
+    Route::get('/penghuni/pemesanan/index', [PenghuniController::class, 'showPemesanan'])->name('penghuni.pemesanan.index');
 });

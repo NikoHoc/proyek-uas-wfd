@@ -8,15 +8,15 @@
         <button class="btn btn-ghost">Pemesanan</button>
     </div> --}}
 
-    <div class="navbar bg-neutral rounded-full border" >
+    <div class="navbar bg-neutral rounded-full border">
         <div class="flex-1">
-          <a class="btn btn-ghost text-xl text-white">Penghuni</a>
+            <a class="btn btn-ghost text-xl text-white">Penghuni</a>
         </div>
         <div class="flex-none">
-          <ul class="menu menu-horizontal px-2 text-white">
-            <li><a class="font-bold hover:bg-gray-500">Home</a></li>
-            <li><a class="font-bold hover:bg-gray-500">Pemesanan</a></li>
-          </ul>
+            <ul class="menu menu-horizontal px-2 text-white">
+                <li><a class="font-bold hover:bg-gray-500">Home</a></li>
+                <li><a class="font-bold hover:bg-gray-500">Pemesanan</a></li>
+            </ul>
         </div>
     </div>
 
@@ -37,7 +37,6 @@
                 <p class="text-gray-800 text-sm mt-2">Total Kamar: {{ $kos->kamar_count }}</p>
             </div>
         </a>
-
         @endforeach
     </div>
 </div>
