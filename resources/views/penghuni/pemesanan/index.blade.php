@@ -10,6 +10,7 @@
             <ul class="menu menu-horizontal px-2 text-white">
                 <li><a href="/penghuni/index" class="font-bold hover:bg-gray-500">Home</a></li>
                 <li><a href="/penghuni/pemesanan/index" class="font-bold hover:bg-gray-500">Pemesanan</a></li>
+                <li><a class="btn-ghost font-bold hover:bg-gray-500" href="#" id="logout-link">Logout</a></li>
             </ul>
         </div>
     </div>
