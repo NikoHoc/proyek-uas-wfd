@@ -15,7 +15,6 @@
     </script>
     @endif
 
-
     <!-- Sidebar -->
     <aside class="w-64 bg-gray-200 p-6">
         @if ($kos)
