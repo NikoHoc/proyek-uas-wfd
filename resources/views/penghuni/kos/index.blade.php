@@ -17,38 +17,31 @@
 
     <!-- Sidenav -->
     <aside class="w-128 bg-gray-800 text-white h-full p-4 space-y-4">
-        <h1 class="text-4xl font-bold mb-4" id="kos-name">Nama Kos</h1>
+        <h1 class="text-4xl font-bold mb-4" id="kos-name"></h1>
         <p><strong>Contact Person:</strong> <span id="kos-contact">Nama Orang</span></p>
         <p><strong>Alamat Kos:</strong> <span id="kos-address">Jl. Contoh No.1</span></p>
+        
         <p><strong>Rating:</strong> <span id="kos-rating">⭐⭐⭐⭐</span></p>
         <p><strong>Catatan:</strong> <span id="kos-notes">Lorem ipsum dolor sit amet.</span></p>
 
-
-        <!-- Review Card 1 -->
+        @if ($listReview->isNotEmpty())
+        @foreach($listReview as $review)
         <div class="card bg-neutral shadow-lg text-white ">
             <div class="card-body">
-                <h3 class="card-title">Nama Orang</h3>
-                <p>⭐⭐⭐⭐⭐</p>
-                <p>"Tempatnya nyaman dan fasilitas lengkap."</p>
+                <h3 class="card-title">{{ $review->pengguna->username}}</h3>
+                <p>{{ $review->isi }}</p>
             </div>
         </div>
-
-
-        <div class="card bg-neutral shadow-lg text-white">
-            <div class="card-body">
-                <h3 class="card-title">Nama Orang</h3>
-                <p>⭐⭐⭐⭐</p>
-                <p>"Harganya sesuai, lokasi strategis."</p>
-            </div>
-        </div>
-
+        @endforeach
+        @else
         <div class="card bg-neutral shadow-lg text-white ">
             <div class="card-body">
-                <h3 class="card-title">Nama Orang</h3>
-                <p>⭐⭐⭐</p>
-                <p>"Butuh perbaikan di beberapa fasilitas."</p>
+                <h3 class="card-title">Belum ada review!</h3>
             </div>
         </div>
+        @endif
+
+        
     </aside>
 
     <!-- Main Content -->

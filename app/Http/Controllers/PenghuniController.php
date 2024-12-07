@@ -6,8 +6,10 @@ use App\Models\Kamar;
 use App\Models\Kos;
 use App\Models\Pengguna;
 use App\Models\Pesanan;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Midtrans\Config;
 use Midtrans\Snap;
 
@@ -28,13 +30,17 @@ class PenghuniController extends Controller
     public function showAllKamar()
     {
         $kosId = session()->get('kos_id'); // Jika Anda menggunakan session untuk menyimpan ID
+        // dd($kosId);
         // Ambil data kos berdasarkan ID
         $kos = Kos::find($kosId);
 
         $listKamar = Kamar::query()->get();
+
+        $listReview = Review::where('id_kos', 2)->get();
         return view('penghuni.kos.index', [
             "listKamar" => $listKamar,
-            "listKos" => $kos
+            "listKos" => $kos,
+            "listReview" => $listReview,
         ]);
     }
 
@@ -129,5 +135,27 @@ class PenghuniController extends Controller
         $listPesanan = Pesanan::with(['kamar.kos'])
             ->where('id_pengguna', $userId)->get();
         return view('penghuni.pemesanan.index', compact('listPesanan'));
+    }
+
+    public function formReview($idKos)
+    {
+        $kos = Kos::find($idKos);
+        return view('penghuni.review.index', compact('kos'));
+    }
+
+    public function addReview(Request $request, $idKos)
+    {
+        $request->validate([
+            'isi' => 'required|string|max:255',
+        ]);
+        $review = new Review();
+        $review->isi = $request->isi;
+        $review->tanggal_review = now();
+        $review->id_pengguna = Auth::user()->id;
+        $review->id_kos = $idKos;
+
+        $review->save();
+
+        return redirect()->route('penghuni.index')->with('success', 'Review berhasil ditambahkan!');
     }
 }

@@ -67,4 +67,6 @@ Route::middleware(['role:penghuni'])->group(function () {
     Route::get('/penghuni/pemesanan/index', [PenghuniController::class, 'showPemesanan'])->name('penghuni.pemesanan.index');
     Route::get('/kos/{id}', [PenghuniController::class, 'show'])->name('kos.show');
     Route::post('/penghuni/kos/pesan/{kamarId:id}', [PenghuniController::class, 'pesanKamar'])->name('penghuni.kos.pesan');
+    Route::get('/penghuni/review/{kosId:id}', [PenghuniController::class, 'formReview'])->name('penghuni.review');
+    Route::post('/penghuni/review/{kosId:id}', [PenghuniController::class, 'addReview'])->name('penghuni.review');
 });
