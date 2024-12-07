@@ -12,7 +12,7 @@
         <ul class="space-y-4">
             <li><strong>Contact Person:</strong> {{ $item->pengguna->username }}  </li>
             <li><strong>Alamat Kos:</strong> {{ $item->alamat }}</li>
-            <li><strong>Rating:</strong> ⭐⭐⭐⭐</li>
+            <li><strong>Rating:</strong> -</li>
             <li><strong>Catatan tambahan:</strong> -</li>
         </ul>
         @endforeach

@@ -1,66 +1,48 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Easy Kos
+This is a laravel project build using tailwind css and daisy ui. We also integrate midtrans for payment gateway.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+#### To setup:
+* [Tailwind](https://tailwindcss.com/docs/guides/laravel)
+* [DaisyUI](https://daisyui.com/docs/install/)
+* Midtrans - create account first and get this key from midtrans, then put it in your .env file. Check this for more info ->
+[Integration guide](https://docs.midtrans.com/docs/snap-snap-integration-guide)
 
-## About Laravel
+```
+MIDTRANS_MERCHANT_ID = ...
+MIDTRANS_CLIENT_KEY = ...
+MIDTRANS_SERVER_KEY = ...
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```
+## Authentication Side
+Used middleware to handle user authentication.
+![Login Page](public/assets/documentation/image.png)
+![Register Page](public/assets/documentation/image-1.png)
+![Middleware](public/assets/documentation/image-2.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Admin
+Admin can view the total overview of the website user, order and review made by customer. Admin can also do CRUD on users.
+![Admin Dashboard](public/assets/documentation/image-3.png)
+![Admin Manage user-user](public/assets/documentation/image-4.png)
+![Admin Manage User-kos](public/assets/documentation/image-5.png)
+![Admin Manage user-penghuni](public/assets/documentation/image-6.png)
+![Admin form kos](public/assets/documentation/image-7.png)
+![Admin Form users](public/assets/documentation/image-8.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Users - Visitor
+Here visitor can view list of kos in the homepage, view the kos detail such as list of room avaiable, can order a room. For the payment, we integrate Midtrans as the payment gateway. Visitor can later review the kos after ordering.
+![Visitor homepage](public/assets/documentation/image-9.png)
+![Detail Kos](public/assets/documentation/image-11.png)
+![Pemesanan](public/assets/documentation/image-12.png)
+![opsi bayar](public/assets/documentation/image-13.png)
+![bayar](public/assets/documentation/image-14.png)
+![Pembayaran berhasil](public/assets/documentation/image-15.png)
+![Riwayat](public/assets/documentation/image-16.png)
+![Review](public/assets/documentation/image-17.png)
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Users - Owner
+Here owner can create a new account. If they are new, the will be redirected to create new kos first. Then they can view their order, and report. Owner can accept or reject visitor order. Owner can also view list of rooms they have and add a new one.
+![New owner](public/assets/documentation/image-18.png)
+![Owner have kos](public/assets/documentation/image-19.png)
+![Owner request](public/assets/documentation/image-20.png)
+![Owner Laporan](public/assets/documentation/image-21.png)
+![Owner add kamar](public/assets/documentation/image-22.png)
